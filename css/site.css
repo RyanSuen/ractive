@@ -1,0 +1,27 @@
+.display-none {
+    display:none;
+}
+li {
+    list-style-type:none;
+}
+.info-box {
+    border:2px solid #5cb85c;
+    border-radius:5px;
+    box-shadow:0 0 1em #eee;
+    margin:40px;
+    padding-left:20px;
+    width:700px;
+}
+.weather-day-box {
+    border:2px solid #3e8f3e;
+    border-radius:5px;
+    box-shadow:0 0 1em #eee;
+    margin-top:10px;
+    padding-left:20px;
+    width:300px;
+    float:left;
+    margin-left:20px;
+    background-color:#ddd;
+    font-family:"MICROSOFT YAHEI";
+    color:#666;
+}

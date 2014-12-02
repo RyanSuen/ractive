@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ractive demo</title>
+    <link rel="stylesheet" href="../css/site.css"/>
+    <link rel="stylesheet" href="../css/lib/jquery.autocomplete.css"/>
+    <script src="../lib/require.js"></script>
+</head>
+<body>
+<div class="header-box">
+    <h1>Weather System</h1>
+</div>
+<div class="main-content-box">
+    <div id='container'></div>
+</div>
+<div class="footer-box">
+</div>
+
+<!--ractive.js-->
+
+<script type="text/ractive" id="template">
+    <div class="info-box" id="weather-now">
+        <p>
+            当前城市：
+            <select id="change-city" on-change="index.change.city" value={{cityCode}}>
+                <option>--请选择--</value>
+                <option value="101280102">番禺</value>
+                <option value="101270507">阆中</value>
+                <option value="101270501">南充</value>
+                <option value="101270406">北川</value>
+                <option value="101270504">蓬安</value>
+            </select>
+            <input type="text" id="city-input" on-focus="city.autocomplete" placeholder="请输入查询城市" />
+        </p>
+        <p>当前温度：{{data.wendu}}<sup>。</sup>C</p>
+        <p>出行提示：{{data.ganmao}}</p>
+    </div>
+
+    <div class="info-box" id="weather-yesterday">
+        <p>昨天：{{data.yesterday.date}}</p>
+        <p>风力：{{data.yesterday.fl}}</p>
+        <p>风向：{{data.yesterday.fx}}</p>
+        <p>高温：{{data.yesterday.high}}</p>
+        <p>低温：{{data.yesterday.low}}</p>
+        <p>天气：{{data.yesterday.type}}</p>
+    </div>
+
+    <button id="btn-test" on-click="index.show.forecast">收起/展开</button>
+    <div class="" id="show-forecast">
+        <ul>
+            {{#data.forecast}}
+                {{>forecastDays}}
+            {{/data.forecast}}
+        </ul>
+    </div>
+</script>
+
+<script type="text/ractive" id="forecastDays">
+    <li class="weather-day-box">
+        <p>{{date}}</p>
+        <p>风力：{{fengli}}</p>
+        <p>风向：{{fengxiang}}</p>
+        <p>高温：{{high}}</p>
+        <p>低温：{{low}}</p>
+        <p>天气：{{type}}</p>
+    </li>
+</script>
+<script>
+    baseUrl:'../'
+    require.config({
+        baseUrl: '../',
+        paths: {
+            'main': 'js/main'
+        }
+    });
+    require(['main'], function(main) {    //网站入口
+        main.Main();
+    });
+</script>
+</body>
+</html>
